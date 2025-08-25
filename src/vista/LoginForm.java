@@ -111,7 +111,9 @@ public class LoginForm extends javax.swing.JFrame {
         String usuario = txtUsuario.getText();
         String password = new String(txtPassword.getPassword());
         if(usuario.equals("admin") && password.equals("1234")) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Login correcto ✅");
+            MenuPrincipal menu = new MenuPrincipal();
+            menu.setVisible(true);
+            this.dispose();
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos ❌");
         }
