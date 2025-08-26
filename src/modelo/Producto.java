@@ -5,29 +5,27 @@
  */
 package modelo;
 
-/**
- *
- * @author Lenovo
- */
 public class Producto {
+    private int id;
     private String nombre;
     private String tipo;
 
-    public Producto(String nombre, String tipo) {
+    public Producto(int id, String nombre, String tipo) {
+        this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public int getId() { return id; }
+    public String getNombre() { return nombre; }
+    public String getTipo() { return tipo; }
 
-    public String getTipo() {
-        return tipo;
-    }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
 
     @Override
     public String toString() {
-        return nombre + " (" + tipo + ")";
+        return id + " - " + nombre + " (" + tipo + ")";
     }
 }
+

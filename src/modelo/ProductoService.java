@@ -5,25 +5,37 @@
  */
 package modelo;
 
-/**
- *
- * @author Lenovo
- */
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductoService {
-    private ArrayList<Producto> productos;
+    private final List<Producto> productos;
+    private int contadorId = 1;
 
     public ProductoService() {
         productos = new ArrayList<>();
     }
 
     public void agregarProducto(String nombre, String tipo) {
-        Producto nuevo = new Producto(nombre, tipo);
-        productos.add(nuevo);
+        productos.add(new Producto(contadorId++, nombre, tipo));
     }
 
-    public ArrayList<Producto> getProductos() {
+    public List<Producto> getProductos() {
         return productos;
+    }
+
+    public boolean actualizarProducto(int id, String nuevoNombre, String nuevoTipo) {
+        for (Producto p : productos) {
+            if (p.getId() == id) {
+                p.setNombre(nuevoNombre);
+                p.setTipo(nuevoTipo);
+                return true;
+            }
+        }
+        return false; 
+    }
+
+    public boolean eliminarProducto(int id) {
+        return productos.removeIf(p -> p.getId() == id);
     }
 }
